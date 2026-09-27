@@ -1,0 +1,101 @@
+
+📚 Miniguia de Estudos: Engenharia de Prompts para IA Generativa
+
+> Projeto Prático - Desafio DIO
+> Uso do NotebookLM como ferramenta de aprendizagem ativa e curadoria do conhecimento.
+
+🎯 Contexto e Objetivos
+
+Contexto
+A Engenharia de Promptsé o processo de projetar, estruturar e otimizar entradas de texto em linguagem natural para guiar modelos de linguagem (LLMs) e soluções de IA generativa no alcance dos resultados desejados. Com o avanço de modelos como GPT, LLaMA e BERT, a qualidade do conteúdo gerado depende diretamente da precisão e do contexto das instruções fornecidas. Este repositório documenta a curadoria e síntese desse conhecimento para servir como guia prático de estudo.
+
+Objetivos de Estudo
+- Compreender o papel da engenharia de prompts na ponte entre a intenção humana e a compreensão da máquina.
+- Mapear as principais técnicas de prompting (como zero-shot, few-shot, Chain-of-Thoughte e Tree-of-Thought).
+- Analisar as boas práticas e os modos de falha (como alucinações, ambiguidades e injeção de prompts).
+- Construir um miniguia e um acervo de prompts reutilizáveis para revisões e aplicações práticas.
+
+📚 Curadoria de Fontes
+
+O estudo foi fundamentado em 3 fontes abertas de grandes provedores de tecnologia e dados:
+
+1. 📄 O que é Engenharia de Prompt? | Databricks  
+   - Descrição: Aborda definições, técnicas avançadas (aprendizado com poucos exemplos, raciocínio em cadeia), ciclo de vida, rastreamento de experimentos com MLflow e aspectos éticos.  
+   - Link: [Databricks Blog](https://www.databricks.com/br/blog/what-is-prompt-engineering)
+
+2. 📄 O que é Engenharia de Prompt? | IBM  
+   - Descrição: Explica o funcionamento dos modelos de base, habilidades necessárias para o engenheiro de prompts, técnicas de otimização e casos de uso em diferentes setores.  
+   - Link: [IBM Think](https://www.ibm.com/br-pt/think/topics/prompt-engineering)
+
+3. 📄 O que é Engenharia por Prompt? | AWS  
+   - Descrição: Detalha a importância dos prompts para desenvolvedores e usuários, técnicas de raciocínio lógico (como maiêutica e estímulo direcional) e boas práticas de formulação.  
+   - Link: [AWS Concept Hub](https://aws.amazon.com/pt/what-is/prompt-engineering/)
+
+🧪 Engenharia de Prompts e "Cicatrizes" (Troubleshooting)
+
+Abaixo estão registrados exemplos de refinamento de instruções e os modos de falha identificados durante os testes.
+
+Evolução de Prompts (Antes vs. Depois)
+
+Prompt V1 (Inexistente/Genérico):
+  > Resuma este documento.
+  * Problema: Resposta rasa, sem formato definido e com risco de ambiguidades ou omissão de fatos cruciais.
+  
+Prompt V2 (Refinado com Papel, Formato e Escopo):  
+  > "Atue como um Especialista em IA Generativa. Com base exclusivamente nas fontes fornecidas, resuma as 3 principais técnicas de prompting e apresente os resultados em uma tabela Markdown indicando a técnica, a descrição e um caso de uso."  
+  Resultado: Resposta precisa, altamente estruturada e alinhada ao objetivo, eliminando a necessidade de pós-processamento.
+
+🩹 Cicatrizes e Troubleshooting (Modos de Falha)
+
+| Problema / Modo de Falha | Causa Identificada nas Fontes | Solução Aplicada no Prompt |
+
+| Ambiguidade e má interpretação | Prompts vagos sem instrução direta ou contexto. | Especificar claramente o formato, os limites de extensão e o objetivo da tarefa. |
+| Alucinação (Informação Falsa) | Prompts excessivamente amplos ou sem amarração em dados. | Utilizar a técnica de *Conhecimento Gerado* ou exigir fundamentação estrita em fontes. |
+| Ataques de Injeção de Prompt | Entradas maliciosas que tentam sobrepor instruções iniciais. | Restringir o escopo de atuação e encapsular a entrada do usuário em instruções de sistema claras. |
+| Especificação Excessiva** | Prompts extremamente rígidos que travam a capacidade de resposta útil do modelo. | Equilibrar o nível de detalhe sem sobrecarregar a instrução. |
+
+---
+
+📖 Miniguia de Estudo (Entrega Final)
+
+1. Resumos Estruturados do Assunto
+
+A. Conceito e Importância
+A Engenharia de Prompts consiste na criação sistemática de instruções em linguagem natural para guiar modelos de linguagem pré-treinados. Sua importância reside em preencher a lacuna entre a intenção do usuário e o processamento da máquina, garantindo respostas de alta qualidade, reduzindo custos computacionais e minimizando retrabalhos de edição manual.
+
+B. Principais Técnicas de Prompting
+Zero-Shot Prompting: Fornece a tarefa ao modelo sem nenhum exemplo prévio de resposta.
+Few-Shot Prompting (Aprendizado de Poucos Exemplos): Oferece alguns exemplos no próprio prompt para esclarecer o padrão de saída desejado.
+Chain-of-Thought (Cadeia de Pensamentos - CoT):Divide tarefas complexas em etapas intermediárias de raciocínio lógico antes de chegar à conclusão.
+Tree-of-Thoughts (Árvore de Pensamentos - ToT): Generaliza a cadeia de pensamentos, gerando múltiplas ramificações lógicas e explorando-as por meio de busca em árvore.
+Estímulo Direcional (Directional Stimulus): Inclui dicas, sugestões ou palavras-chave específicas para orientar o tom ou o foco do modelo.
+
+C. Boas Práticas Recomendadas
+Seja claro e específico: Evite termos ambíguos e defina explicitamente o formato desejado (tabelas, tópicos, JSON).
+Forneça contexto e restrições: Inclua dados de fundo relevantes e estabeleça o que o modelo não deve fazer.
+Itere e refina: Teste variações do prompt e avalie o desempenho de forma contínua.
+Componha tarefas complexas: Decomponha problemas grandes em subproblemas menores em sequência.
+
+2. Glossário de Conceitos
+
+Prompt:Texto de entrada em linguagem natural que orienta uma solução de IA generativa a executar uma tarefa.
+LLM (Large Language Model): Modelo de aprendizado de máquina de grande escala baseado em arquitetura Transformer, pré-treinado em grandes volumes de dados.
+Zero-Shot: Abordagem de solicitação em que a IA responde a uma tarefa sem ter recebido nenhum exemplo prévio no prompt.
+Few-Shot: Abordagem onde poucas amostras de entrada/saída são fornecidas para orientar o modelo.
+Chain-of-Thought (CoT): Técnica que induz o modelo a resolver problemas através de passos intermediários de raciocínio lógico.
+Alucinação: Fenômeno em que o modelo de IA gera informações falsas, incorretas ou sem fundamento nos dados de entrada.
+Prompt Injection: Técnica maliciosa em que uma entrada sobrepõe ou altera as instruções originais do sistema de IA.
+
+ 3. 🔄 Prompts Reutilizáveis para Futuras Revisões
+
+PROMPT 1 - Síntese Estruturada por Fonte:
+"Com base exclusivamente nas fontes do meu caderno, crie um resumo de no máximo 5 tópicos contendo as principais definições de [Subtema], citando explicitamente a origem de cada ponto."
+
+PROMPT 2 - Gerador de Quiz de Fixação:
+"Atue como um instrutor técnico. Crie um questionário com 4 perguntas de múltipla escolha sobre técnicas de engenharia de prompts (como Zero-shot, Few-shot e CoT). Forneça o gabarito comentado ao final."
+
+
+PROMPT 3 - Análise Comparativa de Técnicas:
+"Elabore uma tabela comparativa no formato Markdown analisando as técnicas Zero-Shot, Few-Shot e Chain-of-Thought. A tabela deve conter as colunas: Técnica, Nível de Complexidade, Principais Vantagens e Quando Utilizar."
+
+💡 *Projeto desenvolvido para o Desafio de Projeto da **Digital Innovation One (DIO)**.*
